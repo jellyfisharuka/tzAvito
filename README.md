@@ -16,7 +16,7 @@
 Приложение будет доступно на http://localhost:8080.
 Для остановки и удаления контейнеров, сетей и томов:
 ```bash
-docker compose down
+  docker compose down
 
 ## Структура проекта
 
