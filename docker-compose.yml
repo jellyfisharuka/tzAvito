@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_USER: postgres
+      DB_PASSWORD: 1234
+      DB_NAME: tzavito
+      DATABASE_URL: postgres://postgres:1234@db:5432/tzavito?sslmode=disable
+    ports:
+      - "8080:8080"
+    networks:
+      - mynetwork
+
+  db:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: tzavito
+    networks:
+      - mynetwork
+networks:
+  mynetwork:
+    driver: bridge
